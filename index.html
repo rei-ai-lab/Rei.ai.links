@@ -322,6 +322,166 @@
     h1{ font-size: 28px; }
     .wrap{ padding: 44px 18px 32px; }
   }
+
+  /* hidden easter-egg star */
+  #hiddenStar{
+    position: fixed;
+    right: 14px;
+    bottom: 12px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.18);
+    cursor: pointer;
+    z-index: 5;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    padding: 10px;
+    line-height: 1;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  #hiddenStar:hover, #hiddenStar:active{
+    color: rgba(255,209,102,0.9);
+    transform: scale(1.3) rotate(15deg);
+  }
+
+  #passOverlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(6,8,20,0.72);
+    backdrop-filter: blur(4px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    padding: 20px;
+  }
+  #passOverlay.show{ display:flex; }
+
+  #passBox{
+    width: 100%;
+    max-width: 300px;
+    background: var(--navy-mid);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    padding: 26px 22px;
+    text-align:center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    animation: fadeUp 0.25s ease both;
+  }
+  #passMsg{
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    font-weight:700;
+    font-size:15px;
+    color: var(--lavender-text);
+    margin-bottom:14px;
+  }
+  #passInput{
+    width:100%;
+    padding:10px 12px;
+    border-radius:10px;
+    border:1px solid var(--card-border);
+    background: rgba(255,255,255,0.06);
+    color: var(--lavender-text);
+    font-size:14px;
+    outline:none;
+    margin-bottom:14px;
+  }
+  #passInput:focus{ border-color: var(--violet); }
+  #passBtns{
+    display:flex;
+    gap:10px;
+  }
+  #passBtns button{
+    flex:1;
+    padding:9px 0;
+    border-radius:10px;
+    border:none;
+    font-family:'Noto Sans JP', sans-serif;
+    font-size:13px;
+    font-weight:700;
+    cursor:pointer;
+  }
+  #passSubmit{
+    background: linear-gradient(135deg, var(--violet), var(--blue));
+    color:#fff;
+  }
+  #passCancel{
+    background: rgba(255,255,255,0.08);
+    color: var(--muted);
+  }
+  #passResult{
+    margin-top:12px;
+    font-size:12.5px;
+    color: var(--highlight);
+    min-height:16px;
+  }
+
+  /* success celebration */
+  #passCelebrate{
+    display:none;
+    margin-top:16px;
+    padding-top:16px;
+    border-top:1px solid var(--card-border);
+  }
+  #passCelebrate.show{ display:block; animation: fadeUp 0.4s ease both; }
+  #passCelebrate .cele-title{
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    font-weight:900;
+    font-size:15px;
+    color: var(--highlight);
+    margin-bottom:6px;
+  }
+  #passCelebrate .cele-sub{
+    font-size:12px;
+    color: var(--muted);
+    margin-bottom:14px;
+    line-height:1.5;
+  }
+  #passCelebrate .cele-links{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  #passCelebrate .cele-links a{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 10px;
+    border-radius:10px;
+    background: rgba(255,255,255,0.06);
+    border:1px solid var(--card-border);
+    color: var(--lavender-text);
+    text-decoration:none;
+    font-size:12.5px;
+    font-weight:500;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  #passCelebrate .cele-links a:hover{
+    background: rgba(255,255,255,0.12);
+    transform: translateX(2px);
+  }
+
+  /* confetti */
+  #confettiField{
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 60;
+    overflow: hidden;
+  }
+  .confetti-piece{
+    position:absolute;
+    top:-20px;
+    width:8px;
+    height:14px;
+    opacity:0.9;
+    animation-name: confettiFall;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+  @keyframes confettiFall{
+    0%{ transform: translateY(0) rotate(0deg); opacity:1; }
+    100%{ transform: translateY(110vh) rotate(540deg); opacity:0.9; }
+  }
 </style>
 </head>
 <body>
@@ -343,7 +503,7 @@
 
   <p class="bio">
     現役高校生🎓 毎日「使ってよかったAI・便利サイト」を紹介💻<br>
-    勉強・作業効率化に役立つ情報を発信 note・Xでも発信中📚
+    勉強・作業効率化に役立つ情報を発信 Instagram・Threads・X・noteでも発信中📚
   </p>
 
   <div class="pillars">
@@ -356,11 +516,11 @@
   <div class="divider"></div>
 
   <div class="links">
-    <a class="link-card" href="https://note.com/rei_ai_lab" target="_blank" rel="noopener">
-      <span class="link-icon">📝</span>
+    <a class="link-card" href="https://www.instagram.com/rei.ai.lab/" target="_blank" rel="noopener">
+      <span class="link-icon">📸</span>
       <span class="link-body">
-        <span class="link-title">note</span>
-        <span class="link-sub">note.com/rei_ai_lab</span>
+        <span class="link-title">Instagram</span>
+        <span class="link-sub">instagram.com/rei.ai.lab</span>
       </span>
       <span class="link-arrow">→</span>
     </a>
@@ -370,6 +530,24 @@
       <span class="link-body">
         <span class="link-title">X（旧Twitter）</span>
         <span class="link-sub">x.com/rei_ai_lab</span>
+      </span>
+      <span class="link-arrow">→</span>
+    </a>
+
+    <a class="link-card" href="https://note.com/rei_ai_lab" target="_blank" rel="noopener">
+      <span class="link-icon">📝</span>
+      <span class="link-body">
+        <span class="link-title">note</span>
+        <span class="link-sub">note.com/rei_ai_lab</span>
+      </span>
+      <span class="link-arrow">→</span>
+    </a>
+
+    <a class="link-card" href="https://www.threads.com/@rei.ai.lab?hl=ja" target="_blank" rel="noopener">
+      <span class="link-icon">🧵</span>
+      <span class="link-body">
+        <span class="link-title">Threads</span>
+        <span class="link-sub">threads.com/@rei.ai.lab</span>
       </span>
       <span class="link-arrow">→</span>
     </a>
@@ -389,6 +567,33 @@
   </footer>
 </div>
 
+<div id="hiddenStar" title="">✦</div>
+
+<div id="passOverlay">
+  <div id="passBox">
+    <p id="passMsg">パスワードを入力</p>
+    <input type="password" id="passInput" autocomplete="off" placeholder="password">
+    <div id="passBtns">
+      <button id="passSubmit">送信</button>
+      <button id="passCancel">閉じる</button>
+    </div>
+    <p id="passResult"></p>
+
+    <div id="passCelebrate">
+      <p class="cele-title">🎉 ひみつコマンド発見！</p>
+      <p class="cele-sub">ここまで見つけてくれてありがとう！<br>よければSNSもフォローしてね📸</p>
+      <div class="cele-links">
+        <a href="https://www.instagram.com/rei.ai.lab/" target="_blank" rel="noopener">📸 Instagram</a>
+        <a href="https://x.com/rei_ai_lab" target="_blank" rel="noopener">🐦 X（旧Twitter）</a>
+        <a href="https://note.com/rei_ai_lab" target="_blank" rel="noopener">📝 note</a>
+        <a href="https://www.threads.com/@rei.ai.lab?hl=ja" target="_blank" rel="noopener">🧵 Threads</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="confettiField"></div>
+
 <script>
   // scatter ambient sparkles
   const field = document.getElementById('sparkles');
@@ -406,6 +611,62 @@
     s.style.animationDuration = (3 + Math.random()*3) + 's';
     field.appendChild(s);
   }
+
+  // hidden easter-egg star
+  const star = document.getElementById('hiddenStar');
+  const overlay = document.getElementById('passOverlay');
+  const input = document.getElementById('passInput');
+  const result = document.getElementById('passResult');
+  const SECRET = 'rei.ai.lab!!';
+
+  function openPass(){
+    overlay.classList.add('show');
+    result.textContent = '';
+    input.value = '';
+    celebrate.classList.remove('show');
+    setTimeout(()=> input.focus(), 50);
+  }
+  function closePass(){
+    overlay.classList.remove('show');
+    celebrate.classList.remove('show');
+  }
+  const celebrate = document.getElementById('passCelebrate');
+  const confettiField = document.getElementById('confettiField');
+  const confettiColors = ['#7c6ff0', '#4fa3f7', '#ffd166', '#7cf0a0', '#ff6f91'];
+
+  function fireConfetti(){
+    const count = 60;
+    for(let i=0;i<count;i++){
+      const piece = document.createElement('span');
+      piece.className = 'confetti-piece';
+      piece.style.left = Math.random()*100 + 'vw';
+      piece.style.background = confettiColors[Math.floor(Math.random()*confettiColors.length)];
+      piece.style.animationDuration = (2 + Math.random()*1.5) + 's';
+      piece.style.animationDelay = (Math.random()*0.4) + 's';
+      piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      confettiField.appendChild(piece);
+      setTimeout(()=> piece.remove(), 4200);
+    }
+  }
+
+  function checkPass(){
+    if(input.value === SECRET){
+      result.style.color = '#7cf0a0';
+      result.textContent = '✨ 正解！';
+      celebrate.classList.add('show');
+      fireConfetti();
+    } else {
+      result.style.color = 'var(--highlight)';
+      result.textContent = 'パスワードが違います';
+      celebrate.classList.remove('show');
+    }
+  }
+
+  star.addEventListener('click', openPass);
+  document.getElementById('passCancel').addEventListener('click', closePass);
+  document.getElementById('passSubmit').addEventListener('click', checkPass);
+  input.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') checkPass(); });
+  overlay.addEventListener('click', (e)=>{ if(e.target === overlay) closePass(); });
 </script>
 
 </body>
