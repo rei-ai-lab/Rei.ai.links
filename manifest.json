@@ -1,7 +1,8 @@
 {
   "name": "Rei AI Lab",
   "short_name": "Rei AI",
-  "start_url": "/",
+  "start_url": "/Rei.ai.links/",
+  "scope": "/Rei.ai.links/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#2563EB",
